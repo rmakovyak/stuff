@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import { checkAuth } from './App.helper';
-import logo from './logo.svg';
-import './App.css';
 import firebase from 'firebase';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Content from './components/Content';
+import Sidebar from './components/Sidebar';
+import Header from './components/Header';
+import { checkAuth } from './App.helper';
+import './App.css';
 
 class App extends Component {
 	constructor(props) {
@@ -60,16 +63,18 @@ class App extends Component {
 		}
 
 		return (
-			<div className="App">
-				<header className="App-header">
-					<img src={logo} className="App-logo" alt="logo" />
-					<h1 className="App-title">Welcome to React</h1>
-				</header>
-				<p className="App-intro">
-					Welcome, {this.props.name}
-					<button onClick={this.authenticate.bind(this)} className="btn">Connect with Google</button>				
-					<button onClick={() => firebase.auth().signOut()}>sign out</button>
-				</p>
+			<div className='container-fluid'>
+				<Router>
+					<div className='row'>
+						<div className='col-sm-3 sidebar' id='sidebar'>
+							<Sidebar />
+						</div>
+						<div className='col-12 col-sm-9 content'>
+							<Header userName={this.props.name} />
+							<Content />
+						</div>
+					</div>
+				</Router>
 			</div>
 		);
 	}

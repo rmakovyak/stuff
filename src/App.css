@@ -1,28 +1,16 @@
-.App {
-  text-align: center;
+.fa-inbox {
+    color: #2CB0F5;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.fa-star {
+    color: #FED430;
+    position: relative;
+    left: -2px;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.fa-calendar-alt {
+    color: #FC356E;
+    margin-right: 10px;
+    position: relative;
+    right: -1px;
 }

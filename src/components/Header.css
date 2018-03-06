@@ -1,0 +1,22 @@
+.header {
+    margin-bottom: 20px;
+}
+
+.header__user-info {
+    color: #CED0D5;
+    font-size: 12px;
+    margin: 0;
+    line-height: 22px;
+}
+
+.header__sidebar-toggle {
+    font-size: 20px;
+}
+
+.header__logout {
+    font-size: 11px;
+    margin-left: 10px;
+    padding: 1px 4px;
+    background: #A8AEB6;
+    border: #A8AEB6;
+}
