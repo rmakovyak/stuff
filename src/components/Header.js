@@ -1,6 +1,6 @@
 import React from 'react';
 import firebase from 'firebase';
-import styles from './Header.css';
+import './Header.css';
 
 export default class Header extends React.Component {
     render() {

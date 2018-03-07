@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import styles from './Content.css';
+import './Content.css';
 
 import Inbox from './Inbox';
 import Today from './Today';
