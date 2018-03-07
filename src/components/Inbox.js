@@ -36,12 +36,12 @@ export default class Inbox extends React.Component {
         });
     }
 
-    createTask(input) {
-        if (input.name) {
+    createTask(name) {
+        if (name) {
             const task = { 
                 id: uuid(),
                 timestamp: new Date().getTime(), 
-                ...input 
+                name
             };
             firebase.database().ref(`tasks/${task.id}`).set({
                 ...task
@@ -59,7 +59,7 @@ export default class Inbox extends React.Component {
     render() {
         return (
             <div>
-                <h4 style={{ marginBottom: 40 }}><i className='fa fa-inbox'></i> Inbox</h4>
+                <h4 style={{ marginBottom: 20 }}><i className='fa fa-inbox'></i> Inbox</h4>
                 <CreateTask onCreate={this.createTask} />
                 <TaskList tasks={this.state.tasks} onComplete={this.completeTask}/>
             </div>

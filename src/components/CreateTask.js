@@ -7,8 +7,7 @@ export default class CreateTask extends React.Component {
     }
 
     static initState = {
-        name: '',
-        notes: ''
+        value: ''
     }
 
     constructor(props) {
@@ -20,12 +19,8 @@ export default class CreateTask extends React.Component {
     }
 
     handleSubmit(e) {
-        console.log('on submit');
         e.preventDefault();
-        this.props.onCreate({ 
-            name: this.state.name,
-            notes: this.state.notes
-        });
+        this.props.onCreate(this.state.value);
         this.setState(CreateTask.initState)
     }
 
@@ -35,18 +30,10 @@ export default class CreateTask extends React.Component {
                 <form onSubmit={this.handleSubmit}>
                     <input 
                         type='text'
-                        value={this.state.name}
-                        onChange={(e) => this.setState({ name: e.target.value })}
-                        placeholder='New To-Do'
+                        value={this.state.value}
+                        onChange={(e) => this.setState({ value: e.target.value })}
+                        placeholder='Add task...'
                         className='create-task__input'
-                    />
-                    <textarea 
-                        type='text' 
-                        value={this.state.notes}
-                        onChange={(e) => this.setState({ notes: e.target.value })}
-                        placeholder='Notes' 
-                        rows="3"
-                        className='create-task__textarea'
                     />
                 </form>
             </div>
