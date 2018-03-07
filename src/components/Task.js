@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import enhanceWithClickOutside from 'react-click-outside';
+import './Task.css';
 
 class Task extends React.Component {
     static defaultProps = {
@@ -32,24 +33,28 @@ class Task extends React.Component {
         e.stopPropagation();
         this.setState({
             markedForCompletion: true
-        }, () => setTimeout(() => this.props.onComplete(this.state.task), 2000))
+        }, () => setTimeout(() => this.props.onComplete(this.state.task), 300))
     }
 
     render() {
         return (
             <div
-                key={this.state.task.id}
-                className={classNames('task-list__item', { 'task-list__item--active': this.state.active })}
+                className={classNames(
+                    'task', 
+                    { 'task--active': this.state.active},
+                    { 'task--expanded': this.state.expanded },
+                    { 'task--marked': this.state.markedForCompletion }
+                )}
                 onClick={() => this.setState({ active: !this.state.active })}
                 onDoubleClick={() => this.setState({ expanded: true })}
             >
                 <input
                     type='checkbox'
-                    className='task-list__item-toggle'
+                    className='task__toggle'
                     onClick={this.markComplete}
                 />
                 <span className={classNames(
-                    { 'task-list__item-strike': this.state.markedForCompletion })}>
+                    { 'task__strike': this.state.markedForCompletion })}>
                     {this.state.task.name}
                 </span>
                 {this.state.expanded ? this.state.task.notes : null}

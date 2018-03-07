@@ -1,4 +1,4 @@
-.task-list__item {
+.task {
     padding: 5px 10px;
     font-size: 14px;
     margin-bottom: 5px;
@@ -6,24 +6,33 @@
     cursor: pointer;
 }
 
-.task-list__item--active {
+.task--active {
     background: #EFEFF0;
 }
 
-.task-list__item-toggle {
+.task--marked {
+    transition: 0.5s;
+    opacity: 0;
+}
+
+.task__toggle {
     margin: 0 10px 0 0;
 }
 
-@keyframes strike{
-    0%   { width : 0; }
-    100% { width: 100%; }
-  }
+@keyframes strike {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
 
-  .task-list__item-strike {
+.task__strike {
     position: relative;
-  }
+}
 
-  .task-list__item-strike:after {
+.task__strike:after {
     content: ' ';
     position: absolute;
     top: 50%;
@@ -35,5 +44,5 @@
     animation-duration: .2s;
     animation-timing-function: linear;
     animation-iteration-count: 1;
-    animation-fill-mode: forwards; 
-  }
+    animation-fill-mode: forwards;
+}

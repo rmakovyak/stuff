@@ -1,6 +1,5 @@
 import React from 'react';
 import Task from './Task';
-import './TaskList.css';
 
 export default class TaskList extends React.Component {
     static defaultProps = {
@@ -20,9 +19,12 @@ export default class TaskList extends React.Component {
 
     render() {
         return (
-            <div className='task-list'>
-                {this.state.tasks.map(task => 
-                    <Task task={task} onComplete={this.props.onComplete}/>
+            <div>
+                {this.state.tasks.map(task =>
+                    <Task
+                        task={task}
+                        onComplete={this.props.onComplete}
+                        key={task.id} />
                 )}
             </div>
         )
