@@ -1,11 +1,39 @@
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Roboto', sans-serif;
-  color: #25292E; 
-  letter-spacing: .2px;
+	margin: 0;
+	padding: 0;
+	font-family: 'Roboto', sans-serif;
+	color: #25292E;
+	letter-spacing: .2px;
 }
 
 h4 {
-  font-weight: bold;
+	font-weight: bold;
+}
+
+.input {
+	width: 100%;
+	border: none;
+	outline: none;
+	padding: 5px 0;
+	font-size: 14px;
+	caret-color: #2CB0F5;
+}
+
+.textarea {
+	width: 100%;
+	border: none;
+	outline: none;
+	padding: 10px 0;
+	font-size: 14px;
+	caret-color: #2CB0F5;
+	resize: none;
+}
+
+.input:focus, .textarea:focus {
+	outline: none;
+}
+
+.input::placeholder, .textarea::placeholder {
+	color: #B1B2B3;
+	opacity: 1;
 }

@@ -4,10 +4,7 @@
     margin-bottom: 5px;
     border-radius: 6px;
     cursor: pointer;
-}
-
-.task--active {
-    background: #EFEFF0;
+    transition: 0.3s;
 }
 
 .task--marked {
@@ -15,8 +12,23 @@
     opacity: 0;
 }
 
+.task--expanded {
+    box-shadow: 0 2px 2px rgba(0,0,0,.1), 0 0 2px rgba(0,0,0,.1);
+    border-radius: 4px;
+    padding: 10px;
+}
+
 .task__toggle {
     margin: 0 10px 0 0;
+}
+
+.task__name-input {
+    width: 90%;
+}
+
+.task__notes {
+    font-size: 13px;
+    color: #3a3e42;
 }
 
 @keyframes strike {

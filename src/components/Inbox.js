@@ -14,7 +14,7 @@ export default class Inbox extends React.Component {
         }
 
         this.createTask = this.createTask.bind(this);
-        this.completeTask = this.completeTask.bind(this);
+        this.updateTask = this.updateTask.bind(this);
     }
 
     componentWillMount() {
@@ -49,11 +49,8 @@ export default class Inbox extends React.Component {
         }
     }
 
-    completeTask(task) {
-        firebase.database().ref(`tasks/${task.id}`).set({
-            completed: true,
-            ...task
-        });
+    updateTask(task) {
+        firebase.database().ref(`tasks/${task.id}`).set(task);
     }
 
     render() {
@@ -61,7 +58,9 @@ export default class Inbox extends React.Component {
             <div>
                 <h4 style={{ marginBottom: 20 }}><i className='fa fa-inbox'></i> Inbox</h4>
                 <CreateTask onCreate={this.createTask} />
-                <TaskList tasks={this.state.tasks} onComplete={this.completeTask}/>
+                <TaskList 
+                    tasks={this.state.tasks} 
+                    onTaskUpdate={this.updateTask}/>
             </div>
         );
     }

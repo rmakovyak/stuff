@@ -5,7 +5,7 @@ import './Task.css';
 
 class Task extends React.Component {
     static defaultProps = {
-        onComplete: () => null
+        onTaskUpdate: () => null
     }
 
     constructor(props) {
@@ -33,31 +33,62 @@ class Task extends React.Component {
         e.stopPropagation();
         this.setState({
             markedForCompletion: true
-        }, () => setTimeout(() => this.props.onComplete(this.state.task), 300))
+        }, () => setTimeout(() =>
+            this.props.onTaskUpdate({ ...this.state.task, completed: true }), 300));
     }
 
     render() {
         return (
             <div
                 className={classNames(
-                    'task', 
-                    { 'task--active': this.state.active},
+                    'task',
                     { 'task--expanded': this.state.expanded },
                     { 'task--marked': this.state.markedForCompletion }
                 )}
-                onClick={() => this.setState({ active: !this.state.active })}
-                onDoubleClick={() => this.setState({ expanded: true })}
+                onClick={() => this.setState({ expanded: true })}
             >
-                <input
-                    type='checkbox'
-                    className='task__toggle'
-                    onClick={this.markComplete}
-                />
-                <span className={classNames(
-                    { 'task__strike': this.state.markedForCompletion })}>
-                    {this.state.task.name}
-                </span>
-                {this.state.expanded ? this.state.task.notes : null}
+                {this.state.expanded ?
+                    <form onSubmit={() => this.setState({ expanded: false })}>
+                        <input
+                            type='checkbox'
+                            className='task__toggle'
+                            onClick={this.markComplete}
+                        />
+                        <input
+                            type='text'
+                            className='input task__name-input'
+                            value={this.state.task.name}
+                            onChange={(e) => this.props.onTaskUpdate(
+                                { ...this.state.task, name: e.target.value }
+                            )}
+                            placeholder='Task...'
+                        />
+                        <textarea
+                            type='text'
+                            value={this.state.task.notes}
+                            onChange={(e) => this.props.onTaskUpdate(
+                                { ...this.state.task, notes: e.target.value }
+                            )}
+                            onKeyPress={(e) => { if(e.key == 'Enter') this.setState({ expanded: false }) }}
+                            placeholder='Notes...'
+                            rows="3"
+                            className='textarea task__notes'
+                        />
+                    </form>
+                    :
+
+                    <div>
+                        <input
+                            type='checkbox'
+                            className='task__toggle'
+                            onClick={this.markComplete}
+                        />
+                        <span className={classNames(
+                            { 'task__strike': this.state.markedForCompletion })}>
+                            {this.state.task.name}
+                        </span>
+                    </div>
+                }
             </div>
         )
     }

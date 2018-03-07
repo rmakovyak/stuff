@@ -3,7 +3,7 @@ import Task from './Task';
 
 export default class TaskList extends React.Component {
     static defaultProps = {
-        onComplete: () => null
+        onTaskUpdate: () => null
     }
 
     constructor(props) {
@@ -23,7 +23,7 @@ export default class TaskList extends React.Component {
                 {this.state.tasks.map(task =>
                     <Task
                         task={task}
-                        onComplete={this.props.onComplete}
+                        onTaskUpdate={this.props.onTaskUpdate}
                         key={task.id} />
                 )}
             </div>

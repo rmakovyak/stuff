@@ -33,7 +33,7 @@ export default class CreateTask extends React.Component {
                         value={this.state.value}
                         onChange={(e) => this.setState({ value: e.target.value })}
                         placeholder='Add task...'
-                        className='create-task__input'
+                        className='input'
                     />
                 </form>
             </div>

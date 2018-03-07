@@ -2,21 +2,3 @@
     margin: 0 0 20px 0;
     border-bottom: 1px solid gainsboro;
 }
-
-.create-task__input {
-    width: 100%;
-    border: none;
-    outline: none;
-    padding: 5px 0;
-    font-size: 14px;
-    caret-color: #2CB0F5;
-}
-
-.create-task__input:focus {
-    outline: none;
-}
-
-.create-task__input::placeholder { 
-    color: #B1B2B3;
-    opacity: 1; 
-}
