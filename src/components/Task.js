@@ -69,7 +69,6 @@ class Task extends React.Component {
                             onChange={(e) => this.props.onTaskUpdate(
                                 { ...this.state.task, notes: e.target.value }
                             )}
-                            onKeyPress={(e) => { if(e.key == 'Enter') this.setState({ expanded: false }) }}
                             placeholder='Notes...'
                             rows="3"
                             className='textarea task__notes'
